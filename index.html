@@ -237,7 +237,8 @@
           </div>
         </div>
 
-        <form class="space-y-4" onsubmit="sendEmail(event)">
+        <!-- GOOGLE FORM-WIRED CONTACT FORM -->
+        <form class="space-y-4" onsubmit="submitToGoogleForm(event)">
           <div>
             <label class="text-sm text-neutral-300">Your email</label>
             <input id="email" type="email" required placeholder="you@example.com"
@@ -248,10 +249,18 @@
             <textarea id="message" required rows="6" placeholder="Tell us the device, issue, and any error messages."
               class="mt-1 w-full rounded-xl bg-neutral-950 border border-neutral-800 px-3 py-2 outline-none focus:border-sky-500"></textarea>
           </div>
-          <button type="submit" class="w-full md:w-auto inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-sky-500 font-semibold text-neutral-900 hover:opacity-95">
+
+          <!-- honeypot to deter bots -->
+          <div style="position:absolute;left:-9999px;" aria-hidden="true">
+            <label>Leave this field empty</label>
+            <input id="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <button id="submitBtn" type="submit"
+            class="w-full md:w-auto inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-sky-500 font-semibold text-neutral-900 hover:opacity-95">
             Send enquiry <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </button>
-          <p class="text-xs text-neutral-400">By contacting us you agree to our privacy notice and terms.</p>
+          <p id="formStatus" class="text-xs text-neutral-400"></p>
         </form>
       </div>
     </div>
@@ -311,17 +320,54 @@
     // Replace lucide placeholders with SVGs
     lucide.createIcons();
 
-    // Dynamic year + simple mailto form
+    // Dynamic year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    function sendEmail(e){
+    // ---- Google Forms wiring ----
+    // Your form's POST endpoint:
+    const GOOGLE_FORM_ACTION =
+      "https://docs.google.com/forms/d/e/1FAIpQLSchzo2ijUC7DUpWaIfkgFRa-Gocsn1leY364dXeGrsVpxZrzA/formResponse";
+
+    // Field IDs from your pre-filled link:
+    const ENTRY_EMAIL   = "entry.1341136777";
+    const ENTRY_MESSAGE = "entry.810841087";
+
+    function submitToGoogleForm(e) {
       e.preventDefault();
+      const status = document.getElementById('formStatus');
+      const btn = document.getElementById('submitBtn');
+
       const email = document.getElementById('email').value.trim();
-      const msg = document.getElementById('message').value.trim();
-      const link = `mailto:support@noctorum.solutions?subject=${encodeURIComponent('Repair enquiry')}&body=${encodeURIComponent(msg)}&cc=${encodeURIComponent(email)}`;
-      window.location.href = link;
+      const message = document.getElementById('message').value.trim();
+      const trap = document.getElementById('website').value.trim(); // honeypot
+
+      if (trap) return; // likely a bot
+
+      // UI state
+      btn.disabled = true;
+      btn.classList.add('opacity-70', 'cursor-not-allowed');
+      status.textContent = "Sending…";
+
+      // Build payload for Google Forms
+      const data = new FormData();
+      data.append(ENTRY_EMAIL, email);
+      data.append(ENTRY_MESSAGE, message);
+
+      // Use no-cors to avoid CORS errors on static hosting
+      fetch(GOOGLE_FORM_ACTION, { method: "POST", mode: "no-cors", body: data })
+        .then(() => {
+          status.textContent = "Thanks! We received your message and will reply shortly.";
+          e.target.reset();
+        })
+        .catch(() => {
+          status.textContent = "Hmm, something went wrong. You can also email support@noctorum.solutions.";
+        })
+        .finally(() => {
+          btn.disabled = false;
+          btn.classList.remove('opacity-70', 'cursor-not-allowed');
+        });
     }
-    window.sendEmail = sendEmail;
+    window.submitToGoogleForm = submitToGoogleForm;
   </script>
 </body>
 </html>
