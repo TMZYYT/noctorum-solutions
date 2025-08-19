@@ -225,7 +225,7 @@
           <p class="mt-2 text-neutral-300">Tell us what broke. We’ll reply with next steps and a clear quote.</p>
 
           <div class="mt-6 space-y-3 text-sm text-neutral-300">
-            <p class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> <a href="mailto:support@noctorum.solutions" class="hover:underline">noctorum@solution4u.com</a></p>
+            <p class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> <a href="mailto:noctorum@solutions4u.com" class="hover:underline">noctorum@solutions4u.com</a></p>
             <p class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4"></i> UK & EU service coverage</p>
           </div>
           <div class="mt-4 flex gap-3 text-neutral-400">
@@ -315,8 +315,7 @@
       </div>
       <div>
         <p class="font-semibold">Contact</p>
-        <p class="mt-2 text-neutral-400"><a href="mailto:support@noctorum.solutions" class="hover:underline">support@noctorum.solutions</a></p>
-        <p class="text-neutral-400"><a href="tel:+440000000000" class="hover:underline">+44 0000 000000</a></p>
+        <p class="mt-2 text-neutral-400"><a href="mailto:noctorum@solutions4u.com" class="hover:underline">noctorum@solutions4u.com</a></p>
       </div>
     </div>
     <div class="border-t border-neutral-800 py-4 text-center text-xs text-neutral-500">© <span id="year"></span> Noctorum Solutions. All rights reserved.</div>
@@ -328,20 +327,18 @@
 
     let submitted = false;
     function onFormSubmit() {
-      // Honeypot check
       if (document.getElementById('website').value.trim() !== '') return false;
-
       submitted = true;
       const status = document.getElementById('formStatus');
       const btn = document.getElementById('submitBtn');
       status.textContent = 'Sending…';
       btn.disabled = true;
       btn.classList.add('opacity-70','cursor-not-allowed');
-      return true; // allow POST
+      return true;
     }
 
     function onIframeLoad() {
-      if (!submitted) return; // ignore iframe's initial empty load
+      if (!submitted) return;
       const form = document.getElementById('contactForm');
       const status = document.getElementById('formStatus');
       const btn = document.getElementById('submitBtn');
@@ -353,7 +350,6 @@
       submitted = false;
     }
 
-    // Expose for inline handlers
     window.onFormSubmit = onFormSubmit;
     window.onIframeLoad = onIframeLoad;
   </script>
