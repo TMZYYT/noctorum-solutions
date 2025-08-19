@@ -16,7 +16,6 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    /* soft glow accents */
     .glow-a { position: absolute; inset: -2rem auto auto -2rem; width: 22rem; height: 22rem; background: radial-gradient(closest-side, rgba(14,165,233,.25), transparent); filter: blur(40px); pointer-events:none; }
     .glow-b { position: absolute; inset: auto -2rem -2rem auto; width: 28rem; height: 28rem; background: radial-gradient(closest-side, rgba(99,102,241,.25), transparent); filter: blur(48px); pointer-events:none; }
   </style>
@@ -237,20 +236,25 @@
           </div>
         </div>
 
-        <!-- GOOGLE FORM-WIRED CONTACT FORM -->
-        <form class="space-y-4" onsubmit="submitToGoogleForm(event)">
+        <!-- DIRECT POST TO GOOGLE FORMS VIA HIDDEN IFRAME -->
+        <form id="contactForm"
+              class="space-y-4"
+              action="https://docs.google.com/forms/d/e/1FAIpQLSchzo2ijUC7DUpWaIfkgFRa-Gocsn1leY364dXeGrsVpxZrzA/formResponse"
+              method="POST"
+              target="hidden_iframe"
+              onsubmit="return onFormSubmit()">
           <div>
             <label class="text-sm text-neutral-300">Your email</label>
-            <input id="email" type="email" required placeholder="you@example.com"
+            <input id="email" name="entry.1341136777" type="email" required placeholder="you@example.com"
               class="mt-1 w-full rounded-xl bg-neutral-950 border border-neutral-800 px-3 py-2 outline-none focus:border-sky-500" />
           </div>
           <div>
             <label class="text-sm text-neutral-300">What do you need help with?</label>
-            <textarea id="message" required rows="6" placeholder="Tell us the device, issue, and any error messages."
+            <textarea id="message" name="entry.810841087" required rows="6" placeholder="Tell us the device, issue, and any error messages."
               class="mt-1 w-full rounded-xl bg-neutral-950 border border-neutral-800 px-3 py-2 outline-none focus:border-sky-500"></textarea>
           </div>
 
-          <!-- honeypot to deter bots -->
+          <!-- honeypot -->
           <div style="position:absolute;left:-9999px;" aria-hidden="true">
             <label>Leave this field empty</label>
             <input id="website" type="text" tabindex="-1" autocomplete="off" />
@@ -262,6 +266,9 @@
           </button>
           <p id="formStatus" class="text-xs text-neutral-400"></p>
         </form>
+
+        <!-- Hidden iframe to keep user on page after POST -->
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="onIframeLoad()"></iframe>
       </div>
     </div>
   </section>
@@ -317,57 +324,39 @@
   </footer>
 
   <script>
-    // Replace lucide placeholders with SVGs
     lucide.createIcons();
-
-    // Dynamic year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // ---- Google Forms wiring ----
-    // Your form's POST endpoint:
-    const GOOGLE_FORM_ACTION =
-      "https://docs.google.com/forms/d/e/1FAIpQLSchzo2ijUC7DUpWaIfkgFRa-Gocsn1leY364dXeGrsVpxZrzA/formResponse";
+    let submitted = false;
+    function onFormSubmit() {
+      // Honeypot check
+      if (document.getElementById('website').value.trim() !== '') return false;
 
-    // Field IDs from your pre-filled link:
-    const ENTRY_EMAIL   = "entry.1341136777";
-    const ENTRY_MESSAGE = "entry.810841087";
+      submitted = true;
+      const status = document.getElementById('formStatus');
+      const btn = document.getElementById('submitBtn');
+      status.textContent = 'Sending…';
+      btn.disabled = true;
+      btn.classList.add('opacity-70','cursor-not-allowed');
+      return true; // allow POST
+    }
 
-    function submitToGoogleForm(e) {
-      e.preventDefault();
+    function onIframeLoad() {
+      if (!submitted) return; // ignore iframe's initial empty load
+      const form = document.getElementById('contactForm');
       const status = document.getElementById('formStatus');
       const btn = document.getElementById('submitBtn');
 
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-      const trap = document.getElementById('website').value.trim(); // honeypot
-
-      if (trap) return; // likely a bot
-
-      // UI state
-      btn.disabled = true;
-      btn.classList.add('opacity-70', 'cursor-not-allowed');
-      status.textContent = "Sending…";
-
-      // Build payload for Google Forms
-      const data = new FormData();
-      data.append(ENTRY_EMAIL, email);
-      data.append(ENTRY_MESSAGE, message);
-
-      // Use no-cors to avoid CORS errors on static hosting
-      fetch(GOOGLE_FORM_ACTION, { method: "POST", mode: "no-cors", body: data })
-        .then(() => {
-          status.textContent = "Thanks! We received your message and will reply shortly.";
-          e.target.reset();
-        })
-        .catch(() => {
-          status.textContent = "Hmm, something went wrong. You can also email support@noctorum.solutions.";
-        })
-        .finally(() => {
-          btn.disabled = false;
-          btn.classList.remove('opacity-70', 'cursor-not-allowed');
-        });
+      status.textContent = 'Thanks! We received your message and will reply shortly.';
+      form.reset();
+      btn.disabled = false;
+      btn.classList.remove('opacity-70','cursor-not-allowed');
+      submitted = false;
     }
-    window.submitToGoogleForm = submitToGoogleForm;
+
+    // Expose for inline handlers
+    window.onFormSubmit = onFormSubmit;
+    window.onIframeLoad = onIframeLoad;
   </script>
 </body>
 </html>
