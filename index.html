@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Noctorum Solutions — Tech Repairs & Managed IT</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Noctorum Solutions: fast, reliable tech repairs and managed IT. Founded by CEO Kaiden Jones and COO Molly Blay." />
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {} } }
+  </script>
+
+  <!-- Lucide Icons (CDN) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* soft glow accents */
+    .glow-a { position: absolute; inset: -2rem auto auto -2rem; width: 22rem; height: 22rem; background: radial-gradient(closest-side, rgba(14,165,233,.25), transparent); filter: blur(40px); pointer-events:none; }
+    .glow-b { position: absolute; inset: auto -2rem -2rem auto; width: 28rem; height: 28rem; background: radial-gradient(closest-side, rgba(99,102,241,.25), transparent); filter: blur(48px); pointer-events:none; }
+  </style>
+</head>
+<body class="bg-neutral-950 text-neutral-100 selection:bg-sky-500/30 selection:text-white">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-neutral-950/70 border-b border-neutral-800">
+    <nav class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-500 grid place-items-center shadow-lg shadow-sky-900/40">
+          <i data-lucide="cpu" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <p class="text-lg font-semibold leading-tight">Noctorum Solutions</p>
+          <p class="text-xs text-neutral-400 leading-tight">Tech repairs • Managed IT</p>
+        </div>
+      </div>
+      <div class="hidden md:flex items-center gap-6 text-sm text-neutral-300">
+        <a href="#services" class="hover:text-white">Services</a>
+        <a href="#plans" class="hover:text-white">Plans</a>
+        <a href="#about" class="hover:text-white">About</a>
+        <a href="#contact" class="hover:text-white">Contact</a>
+        <a href="#contact" class="px-3 py-1.5 rounded-xl bg-white text-neutral-900 font-medium hover:opacity-90">Book now</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="book" class="relative overflow-hidden">
+    <div class="glow-a"></div>
+    <div class="glow-b"></div>
+
+    <div class="mx-auto max-w-6xl px-4 py-20 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
+          Fast, reliable tech repairs for individuals and teams
+        </h1>
+        <p class="mt-4 text-neutral-300 text-lg max-w-prose">
+          Noctorum Solutions keeps your devices and business systems running. From cracked screens and slow laptops to managed IT and cybersecurity, we fix problems at the speed you work.
+        </p>
+        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+          <a href="#contact" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-sky-500 font-semibold text-neutral-900 hover:opacity-95">
+            Get a free diagnosis <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <a href="#services" class="inline-flex items-center justify-center px-5 py-3 rounded-2xl bg-neutral-800 hover:bg-neutral-700 font-medium">
+            Explore services
+          </a>
+        </div>
+        <div class="mt-6 flex items-center gap-6 text-sm text-neutral-400">
+          <div class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4"></i><span>Same-day diagnostics</span></div>
+          <div class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4"></i><span>12-month warranty</span></div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="absolute -inset-1 bg-gradient-to-br from-sky-500/30 to-indigo-500/30 rounded-3xl blur opacity-60"></div>
+        <div class="relative rounded-3xl p-6 bg-neutral-900 border border-neutral-800 shadow-2xl">
+          <div class="grid grid-cols-2 gap-3">
+            <div class="rounded-2xl border border-neutral-800 bg-neutral-950 p-4 flex items-center gap-3"><i data-lucide="laptop" class="w-5 h-5"></i><span class="text-sm">Laptops</span></div>
+            <div class="rounded-2xl border border-neutral-800 bg-neutral-950 p-4 flex items-center gap-3"><i data-lucide="smartphone" class="w-5 h-5"></i><span class="text-sm">Phones</span></div>
+            <div class="rounded-2xl border border-neutral-800 bg-neutral-950 p-4 flex items-center gap-3"><i data-lucide="server" class="w-5 h-5"></i><span class="text-sm">Servers</span></div>
+            <div class="rounded-2xl border border-neutral-800 bg-neutral-950 p-4 flex items-center gap-3"><i data-lucide="wifi" class="w-5 h-5"></i><span class="text-sm">Networks</span></div>
+            <div class="rounded-2xl border border-neutral-800 bg-neutral-950 p-4 flex items-center gap-3"><i data-lucide="database" class="w-5 h-5"></i><span class="text-sm">Backups</span></div>
+            <div class="rounded-2xl border border-neutral-800 bg-neutral-950 p-4 flex items-center gap-3"><i data-lucide="shield-check" class="w-5 h-5"></i><span class="text-sm">Security</span></div>
+          </div>
+          <div class="mt-4 text-xs text-neutral-400">
+            Trusted by startups, charities, and home users across the UK & EU.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="mx-auto max-w-6xl px-4 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold">What we fix</h2>
+    <p class="mt-2 text-neutral-300 max-w-prose">From a single device to a whole fleet, we diagnose and repair quickly, with clear pricing and no jargon.</p>
+
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="rounded-2xl border border-neutral-800 bg-neutral-900 p-5 hover:border-neutral-700 transition">
+        <div class="w-10 h-10 rounded-xl bg-neutral-800 grid place-items-center mb-3"><i data-lucide="laptop" class="w-6 h-6"></i></div>
+        <h3 class="font-semibold">Laptop & Desktop Repair</h3>
+        <p class="mt-1 text-sm text-neutral-300">Windows, macOS & Linux diagnostics, upgrades, and board-level fixes.</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-800 bg-neutral-900 p-5 hover:border-neutral-700 transition">
+        <div class="w-10 h-10 rounded-xl bg-neutral-800 grid place-items-center mb-3"><i data-lucide="smartphone" class="w-6 h-6"></i></div>
+        <h3 class="font-semibold">Phone & Tablet Repair</h3>
+        <p class="mt-1 text-sm text-neutral-300">Screens, batteries, ports, water damage recovery, and data transfer.</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-800 bg-neutral-900 p-5 hover:border-neutral-700 transition">
+        <div class="w-10 h-10 rounded-xl bg-neutral-800 grid place-items-center mb-3"><i data-lucide="server" class="w-6 h-6"></i></div>
+        <h3 class="font-semibold">Server & Cloud</h3>
+        <p class="mt-1 text-sm text-neutral-300">SMB servers, AD/Azure AD, M365/Google Workspace, backups, and cloud migrations.</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-800 bg-neutral-900 p-5 hover:border-neutral-700 transition">
+        <div class="w-10 h-10 rounded-xl bg-neutral-800 grid place-items-center mb-3"><i data-lucide="wifi" class="w-6 h-6"></i></div>
+        <h3 class="font-semibold">Networks & Wi-Fi</h3>
+        <p class="mt-1 text-sm text-neutral-300">Office and home networks, mesh Wi-Fi, VPNs, and secure remote access.</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-800 bg-neutral-900 p-5 hover:border-neutral-700 transition">
+        <div class="w-10 h-10 rounded-xl bg-neutral-800 grid place-items-center mb-3"><i data-lucide="database" class="w-6 h-6"></i></div>
+        <h3 class="font-semibold">Data & Recovery</h3>
+        <p class="mt-1 text-sm text-neutral-300">On-device recovery, NAS/RAID, secure wipes, and compliant disposals.</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-800 bg-neutral-900 p-5 hover:border-neutral-700 transition">
+        <div class="w-10 h-10 rounded-xl bg-neutral-800 grid place-items-center mb-3"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
+        <h3 class="font-semibold">Cybersecurity</h3>
+        <p class="mt-1 text-sm text-neutral-300">Hardening, EDR/AV, patching, email security, and awareness training.</p>
+      </div>
+    </div>
+
+    <div class="mt-8 rounded-2xl border border-neutral-800 bg-neutral-900 p-6 grid md:grid-cols-3 gap-6">
+      <div class="flex items-center gap-3"><i data-lucide="shield-check" class="w-5 h-5"></i><div><p class="font-medium">Warranty & Quality Parts</p><p class="text-sm text-neutral-300">Premium components with a 12-month workmanship warranty.</p></div></div>
+      <div class="flex items-center gap-3"><i data-lucide="clock" class="w-5 h-5"></i><div><p class="font-medium">Speed as Standard</p><p class="text-sm text-neutral-300">Most phone repairs in hours, laptops within 1–2 business days.</p></div></div>
+      <div class="flex items-center gap-3"><i data-lucide="shield-check" class="w-5 h-5"></i><div><p class="font-medium">Privacy First</p><p class="text-sm text-neutral-300">We follow least-privilege and never access personal data without consent.</p></div></div>
+    </div>
+  </section>
+
+  <!-- PLANS -->
+  <section id="plans" class="mx-auto max-w-6xl px-4 py-16">
+    <div class="flex items-end justify-between gap-6 flex-wrap">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold">Simple plans for every need</h2>
+        <p class="mt-2 text-neutral-300 max-w-prose">Choose ad-hoc repair, monthly support, or a scoped project. No lock-ins, transparent SLAs.</p>
+      </div>
+      <a href="#contact" class="px-4 py-2 rounded-xl bg-white text-neutral-900 font-medium">Talk to sales</a>
+    </div>
+
+    <div class="mt-8 grid md:grid-cols-3 gap-4">
+      <div class="rounded-2xl border border-neutral-800 bg-neutral-900 p-6 relative">
+        <div class="flex items-center gap-2 text-neutral-300"><i data-lucide="user" class="w-5 h-5"></i><span class="font-semibold text-neutral-100">Individuals</span></div>
+        <p class="mt-3 text-3xl font-extrabold tracking-tight">From £49</p>
+        <ul class="mt-4 space-y-2 text-sm text-neutral-300">
+          <li class="flex gap-2 items-start"><i data-lucide="shield-check" class="w-4 h-4 mt-0.5"></i><span>Same-day diagnostics</span></li>
+          <li class="flex gap-2 items-start"><i data-lucide="shield-check" class="w-4 h-4 mt-0.5"></i><span>Screen/battery replacements</span></li>
+          <li class="flex gap-2 items-start"><i data-lucide="shield-check" class="w-4 h-4 mt-0.5"></i><span>Data rescue & transfers</span></li>
+          <li class="flex gap-2 items-start"><i data-lucide="shield-check" class="w-4 h-4 mt-0.5"></i><span>Home Wi-Fi optimisation</span></li>
+        </ul>
+        <a href="#contact" class="mt-6 inline-flex items-center justify-center w-full px-4 py-2 rounded-xl font-semibold bg-neutral-800 hover:bg-neutral-700">Book a repair</a>
+      </div>
+
+      <div class="rounded-2xl border border-sky-500 bg-neutral-900 p-6 relative">
+        <span class="absolute -top-3 left-6 text-xs px-2 py-1 rounded-full bg-sky-500 text-neutral-900 font-semibold">Most popular</span>
+        <div class="flex items-center gap-2 text-neutral-300"><i data-lucide="building-2" class="w-5 h-5"></i><span class="font-semibold text-neutral-100">Business</span></div>
+        <p class="mt-3 text-3xl font-extrabold tracking-tight">From £299/mo</p>
+        <ul class="mt-4 space-y-2 text-sm text-neutral-300">
+          <li class="flex gap-2 items-start"><i data-lucide="shield-check" class="w-4 h-4 mt-0.5"></i><span>Unlimited remote support</span></li>
+          <li class="flex gap-2 items-start"><i data-lucide="shield-check" class="w-4 h-4 mt-0.5"></i><span>4-hour on-site SLA</span></li>
+          <li class="flex gap-2 items-start"><i data-lucide="shield-check" class="w-4 h-4 mt-0.5"></i><span>Managed backups & EDR</span></li>
+          <li class="flex gap-2 items-start"><i data-lucide="shield-check" class="w-4 h-4 mt-0.5"></i><span>Microsoft 365/Google admin</span></li>
+        </ul>
+        <a href="#contact" class="mt-6 inline-flex items-center justify-center w-full px-4 py-2 rounded-xl font-semibold bg-sky-500 text-neutral-900 hover:opacity-95">Start a plan</a>
+      </div>
+
+      <div class="rounded-2xl border border-neutral-800 bg-neutral-900 p-6 relative">
+        <div class="flex items-center gap-2 text-neutral-300"><i data-lucide="wrench" class="w-5 h-5"></i><span class="font-semibold text-neutral-100">Projects</span></div>
+        <p class="mt-3 text-3xl font-extrabold tracking-tight">Custom</p>
+        <ul class="mt-4 space-y-2 text-sm text-neutral-300">
+          <li class="flex gap-2 items-start"><i data-lucide="shield-check" class="w-4 h-4 mt-0.5"></i><span>Office moves & fit-outs</span></li>
+          <li class="flex gap-2 items-start"><i data-lucide="shield-check" class="w-4 h-4 mt-0.5"></i><span>Network refresh & Wi-Fi surveys</span></li>
+          <li class="flex gap-2 items-start"><i data-lucide="shield-check" class="w-4 h-4 mt-0.5"></i><span>Cloud migrations</span></li>
+          <li class="flex gap-2 items-start"><i data-lucide="shield-check" class="w-4 h-4 mt-0.5"></i><span>Security reviews & training</span></li>
+        </ul>
+        <a href="#contact" class="mt-6 inline-flex items-center justify-center w-full px-4 py-2 rounded-xl font-semibold bg-neutral-800 hover:bg-neutral-700">Get a quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="mx-auto max-w-6xl px-4 py-16">
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold">Founded by problem-solvers</h2>
+        <p class="mt-3 text-neutral-300">Noctorum Solutions was founded to make dependable, human-first tech support accessible to everyone. We specialise in rapid diagnostics and right-to-repair friendly fixes, with enterprise-grade standards scaled to suit homes and small businesses.</p>
+        <div class="mt-6 grid sm:grid-cols-2 gap-4">
+          <div class="rounded-2xl border border-neutral-800 bg-neutral-900 p-4">
+            <p class="text-sm text-neutral-400">Chief Executive Officer</p>
+            <p class="font-semibold">Kaiden Jones</p>
+            <p class="mt-1 text-sm text-neutral-300">Leads strategy and R&D, ensuring our methods are rigorous, secure, and scalable.</p>
+          </div>
+          <div class="rounded-2xl border border-neutral-800 bg-neutral-900 p-4">
+            <p class="text-sm text-neutral-400">Chief Operating Officer</p>
+            <p class="font-semibold">Molly Blay</p>
+            <p class="mt-1 text-sm text-neutral-300">Runs day-to-day operations and customer experience so every repair feels effortless.</p>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-3xl p-6 border border-neutral-800 bg-neutral-900">
+        <div class="grid grid-cols-2 gap-3">
+          <div class="rounded-2xl border border-neutral-800 bg-neutral-950 p-4 flex items-center gap-3"><i data-lucide="clock" class="w-5 h-5"></i><span class="text-sm">4-hour business SLA</span></div>
+          <div class="rounded-2xl border border-neutral-800 bg-neutral-950 p-4 flex items-center gap-3"><i data-lucide="shield-check" class="w-5 h-5"></i><span class="text-sm">ISO-aligned practices</span></div>
+          <div class="rounded-2xl border border-neutral-800 bg-neutral-950 p-4 flex items-center gap-3"><i data-lucide="wrench" class="w-5 h-5"></i><span class="text-sm">Right-to-repair ethos</span></div>
+          <div class="rounded-2xl border border-neutral-800 bg-neutral-950 p-4 flex items-center gap-3"><i data-lucide="wifi" class="w-5 h-5"></i><span class="text-sm">Remote & on-site</span></div>
+        </div>
+        <p class="mt-4 text-sm text-neutral-400">We serve the UK & EU with remote support and regional on-site coverage.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="mx-auto max-w-6xl px-4 py-16">
+    <div class="rounded-3xl border border-neutral-800 bg-neutral-900 p-6">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold">Get in touch</h2>
+          <p class="mt-2 text-neutral-300">Tell us what broke. We’ll reply with next steps and a clear quote.</p>
+
+          <div class="mt-6 space-y-3 text-sm text-neutral-300">
+            <p class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> <a href="mailto:support@noctorum.solutions" class="hover:underline">support@noctorum.solutions</a></p>
+            <p class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4"></i> <a href="tel:+440000000000" class="hover:underline">+44 0000 000000</a></p>
+            <p class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4"></i> UK & EU service coverage</p>
+          </div>
+          <div class="mt-4 flex gap-3 text-neutral-400">
+            <a href="#" aria-label="LinkedIn" class="p-2 rounded-full bg-neutral-800 hover:bg-neutral-700"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+            <a href="#" aria-label="Twitter" class="p-2 rounded-full bg-neutral-800 hover:bg-neutral-700"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+            <a href="#" aria-label="Facebook" class="p-2 rounded-full bg-neutral-800 hover:bg-neutral-700"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+          </div>
+        </div>
+
+        <form class="space-y-4" onsubmit="sendEmail(event)">
+          <div>
+            <label class="text-sm text-neutral-300">Your email</label>
+            <input id="email" type="email" required placeholder="you@example.com"
+              class="mt-1 w-full rounded-xl bg-neutral-950 border border-neutral-800 px-3 py-2 outline-none focus:border-sky-500" />
+          </div>
+          <div>
+            <label class="text-sm text-neutral-300">What do you need help with?</label>
+            <textarea id="message" required rows="6" placeholder="Tell us the device, issue, and any error messages."
+              class="mt-1 w-full rounded-xl bg-neutral-950 border border-neutral-800 px-3 py-2 outline-none focus:border-sky-500"></textarea>
+          </div>
+          <button type="submit" class="w-full md:w-auto inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-sky-500 font-semibold text-neutral-900 hover:opacity-95">
+            Send enquiry <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+          <p class="text-xs text-neutral-400">By contacting us you agree to our privacy notice and terms.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="mx-auto max-w-6xl px-4 pb-20">
+    <div class="rounded-3xl border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-950 p-8 md:p-10 grid md:grid-cols-2 gap-6 items-center">
+      <div>
+        <h3 class="text-2xl md:text-3xl font-bold">Need help today?</h3>
+        <p class="mt-2 text-neutral-300">Book a same-day diagnostic and we’ll get you back up and running.</p>
+      </div>
+      <div class="flex md:justify-end">
+        <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-white text-neutral-900 font-semibold">Book now <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-neutral-800">
+    <div class="mx-auto max-w-6xl px-4 py-10 grid md:grid-cols-4 gap-8 text-sm">
+      <div>
+        <p class="font-semibold">Noctorum Solutions</p>
+        <p class="mt-2 text-neutral-400">Tech repairs for individuals and businesses.</p>
+      </div>
+      <div>
+        <p class="font-semibold">Services</p>
+        <ul class="mt-2 space-y-2 text-neutral-400">
+          <li>Laptop & Desktop</li>
+          <li>Phone & Tablet</li>
+          <li>Networks & Wi-Fi</li>
+          <li>Servers & Cloud</li>
+          <li>Data & Recovery</li>
+          <li>Cybersecurity</li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-semibold">Company</p>
+        <ul class="mt-2 space-y-2 text-neutral-400">
+          <li><a href="#about" class="hover:text-white">About</a></li>
+          <li><a href="#plans" class="hover:text-white">Plans</a></li>
+          <li><a href="#contact" class="hover:text-white">Contact</a></li>
+          <li><a href="#" class="hover:text-white">Privacy</a></li>
+          <li><a href="#" class="hover:text-white">Terms</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-semibold">Contact</p>
+        <p class="mt-2 text-neutral-400"><a href="mailto:support@noctorum.solutions" class="hover:underline">support@noctorum.solutions</a></p>
+        <p class="text-neutral-400"><a href="tel:+440000000000" class="hover:underline">+44 0000 000000</a></p>
+      </div>
+    </div>
+    <div class="border-t border-neutral-800 py-4 text-center text-xs text-neutral-500">© <span id="year"></span> Noctorum Solutions. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Replace lucide placeholders with SVGs
+    lucide.createIcons();
+
+    // Dynamic year + simple mailto form
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function sendEmail(e){
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('message').value.trim();
+      const link = `mailto:support@noctorum.solutions?subject=${encodeURIComponent('Repair enquiry')}&body=${encodeURIComponent(msg)}&cc=${encodeURIComponent(email)}`;
+      window.location.href = link;
+    }
+    window.sendEmail = sendEmail;
+  </script>
+</body>
+</html>
